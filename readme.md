@@ -39,3 +39,15 @@ function myFunction() {
   Logger.log(doc.getBody().getParagraphs()[0].getText());
 }
 ```
+
+- But use `openById(id)` or `openByUrl(url)` method to find information about the doc when you are using standalone script:
+
+```js
+function myFunction() {
+  const doc = DocumentApp.openById(
+    "1__Ffz8mVRd1JVHskB9MlVTXa4ygQ18rGOHQSem7kby8"
+  );
+  Logger.log(doc.getUrl());
+  Logger.log(doc.getName());
+}
+```
