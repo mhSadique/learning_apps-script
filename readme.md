@@ -27,3 +27,15 @@ function practice() {
   }
 }
 ```
+
+- Use `getActiveDocument()` method to find information about the doc using script that are `container-bound`:
+
+```js
+function myFunction() {
+  const doc = DocumentApp.getActiveDocument();
+  Logger.log(doc.getId());
+  Logger.log(doc.getName());
+  Logger.log(doc.getUrl());
+  Logger.log(doc.getBody().getParagraphs()[0].getText());
+}
+```
