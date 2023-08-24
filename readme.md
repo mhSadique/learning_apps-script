@@ -17,3 +17,13 @@ function myFunction() {
   GmailApp.sendEmail(email, subject, emailBody);
 }
 ```
+
+- How you put something in the console:
+
+```js
+function practice() {
+  for (let i = 0; i < 10; i++) {
+    Logger.log(`Logged ${i + 1} times`); // this is equivalent to console.log(), but runs on the backend
+  }
+}
+```
