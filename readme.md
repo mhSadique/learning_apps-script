@@ -1,6 +1,6 @@
 # I will use this repo to take notes on what I learned about Apps Script (G Suite)
 
-## Code examples with descriptions below:
+## Code examples for `DocumentApp` with descriptions below:
 
 - The code below create Google Doc, add some text content to it, and sends the link to the newly created file to a specified email address
 
@@ -40,7 +40,7 @@ function myFunction() {
 }
 ```
 
-- But use `openById(id)` or `openByUrl(url)` method to find information about the doc when you are using standalone script:
+- But use `openById(id)` or `openByUrl(url)` method to find information about the doc when you are using `standalone` script:
 
 ```js
 function myFunction() {
@@ -49,5 +49,15 @@ function myFunction() {
   );
   Logger.log(doc.getUrl());
   Logger.log(doc.getName());
+}
+```
+
+## Code examples for `SpreadsheetApp` with descriptions below:
+
+- Simply create spreadsheet with the code below:
+
+```js
+function myFunction() {
+  const ss = SpreadsheetApp.create("My monthly expense tracker");
 }
 ```
