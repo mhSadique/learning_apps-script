@@ -69,3 +69,27 @@ function myFunction() {
   const ss = SpreadsheetApp.create("My monthly expense tracker, 50, 20");
 }
 ```
+
+- Below is how you can select cells using notations and/or cell values:
+
+```js
+function fun1() {
+  const ssId = "1A8mPDyaw2RRSaLlf1q_l1HTWEI8lsSWmEw7p8U1e2Kc";
+  const ss = SpreadsheetApp.openById(ssId);
+  const firstSheet = ss.getSheets()[0];
+
+  // Notations
+  firstSheet.getRange("A1").setBackground("red"); // select only one cell
+  firstSheet.getRange("A3:A8").setBackground("green"); // select the cells in between (vertically)
+  firstSheet.getRange("A3:F3").setBackground("tomato"); // select the cells in between (horizontally)
+  firstSheet.getRange("G3:I13").setBackground("yellow"); // select a rectangle
+
+  firstSheet.getRange("2:2").setBackground("green"); // select only 2nd row
+  firstSheet.getRange("2:9").setBackground("yellow"); // select 2nd row to 9th row
+
+  // Cell values
+  firstSheet.getRange(4, 8, 6).setBackground("yellow"); // select 6 cells vertically from the intersection of 4th row and 8th column
+  firstSheet.getRange(4, 8, 6, 3).setBackground("yellow"); // select 6 cells vertically and 3 columns horizontally from the intersection of 4th row and 8th column
+  console.log(ss.getName());
+}
+```
