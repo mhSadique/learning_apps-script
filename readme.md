@@ -61,3 +61,11 @@ function myFunction() {
   const ss = SpreadsheetApp.create("My monthly expense tracker");
 }
 ```
+
+- You can define the number of rows and columns when you create one:
+
+```js
+function myFunction() {
+  const ss = SpreadsheetApp.create("My monthly expense tracker, 50, 20");
+}
+```
