@@ -93,3 +93,22 @@ function fun1() {
   console.log(ss.getName());
 }
 ```
+
+- Below is how you can select ranges, get and set their values:
+
+```js
+function fun() {
+  const ssId = "1A8mPDyaw2RRSaLlf1q_l1HTWEI8lsSWmEw7p8U1e2Kc";
+  const ss = SpreadsheetApp.openById(ssId);
+  const firstSheet = ss.getSheets()[0];
+  const range = firstSheet.getRange(1, 1, 3, 4); // (row, col, numRows, numCols)
+  let values = range.getValues();
+
+  // we swap the values of 2nd and 3rd rows
+  // REMEMBER, the two dimensional array must match the range you define
+  const newValues = [values[0], values[2], values[1]];
+  range.setValues(newValues);
+  values = range.getValues();
+  console.log(values);
+}
+```
