@@ -70,7 +70,7 @@ function myFunction() {
 }
 ```
 
-- Below is how you can select cells using notations and/or cell values:
+- How you select cells using notations and/or cell values:
 
 ```js
 function fun1() {
@@ -94,7 +94,7 @@ function fun1() {
 }
 ```
 
-- Below is how you can select ranges, get and set their values:
+- How you select ranges, get and set their values:
 
 ```js
 function fun() {
@@ -113,7 +113,7 @@ function fun() {
 }
 ```
 
-- How you can create a table in a Document using the data that are in a SpreadSheet:
+- How you create a table in a Document using the data that are in a SpreadSheet:
 
 ```js
 function createTableInDocUsingSheetData() {
@@ -127,6 +127,38 @@ function createTableInDocUsingSheetData() {
 
   // create a doc where we will create a table
   const doc = DocumentApp.create("Sample Data");
+
+  // select the body of the doc
+  const body = doc.getBody();
+
+  // create a paragraph with text as the name of the SpreadSheet and set it as heading1
+  body
+    .insertParagraph(0, ss.getName())
+    .setHeading(DocumentApp.ParagraphHeading.HEADING1);
+
+  // put the data into the table and format it
+  const table = body.appendTable(dataToPutInTheTable);
+  table.getRow(0).editAsText().setBold(true);
+}
+```
+
+- How you create table in a Document with dynamic SpreadSheet data:
+
+```js
+function createTableInDocUsingSheetDataThatAreDynamic() {
+  const ssId = "1A8mPDyaw2RRSaLlf1q_l1HTWEI8lsSWmEw7p8U1e2Kc";
+  const ss = SpreadsheetApp.openById(ssId);
+  const firstSheet = ss.getSheets()[0];
+
+  // get values of the cells, which is a multidimensional array
+  // when you use getLastRow() and getLastColumn(), remember the adjust the row and col values in the getRange(row, col, numRows, numCols) method
+  const dataToPutInTheTable = firstSheet
+    .getRange(1, 1, firstSheet.getLastRow(), firstSheet.getLastColumn())
+    .getValues();
+  console.log("dataToPutInTheTable", dataToPutInTheTable);
+
+  const docId = "1r_s3Cr2URp3o-v5Ec5OW3DU4DK_nPeGAEOwZxmQatW4";
+  const doc = DocumentApp.openById(docId);
 
   // select the body of the doc
   const body = doc.getBody();
