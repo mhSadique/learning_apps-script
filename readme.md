@@ -112,3 +112,32 @@ function fun() {
   console.log(values);
 }
 ```
+
+- How you can create a table in a Document using the data that are in a SpreadSheet:
+
+```js
+function createTableInDocUsingSheetData() {
+  const ssId = "1A8mPDyaw2RRSaLlf1q_l1HTWEI8lsSWmEw7p8U1e2Kc";
+  const ss = SpreadsheetApp.openById(ssId);
+  const firstSheet = ss.getSheets()[0];
+
+  // get values of the cells, which is a multidimensional array
+  const dataToPutInTheTable = firstSheet.getRange(1, 1, 3, 4).getValues();
+  console.log("dataToPutInTheTable", dataToPutInTheTable);
+
+  // create a doc where we will create a table
+  const doc = DocumentApp.create("Sample Data");
+
+  // select the body of the doc
+  const body = doc.getBody();
+
+  // create a paragraph with text as the name of the SpreadSheet and set it as heading1
+  body
+    .insertParagraph(0, ss.getName())
+    .setHeading(DocumentApp.ParagraphHeading.HEADING1);
+
+  // put the data into the table and format it
+  const table = body.appendTable(dataToPutInTheTable);
+  table.getRow(0).editAsText().setBold(true);
+}
+```
