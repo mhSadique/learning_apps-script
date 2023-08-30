@@ -88,8 +88,8 @@ function fun1() {
   firstSheet.getRange("2:9").setBackground("yellow"); // select 2nd row to 9th row
 
   // Cell values
-  firstSheet.getRange(4, 8, 6).setBackground("yellow"); // select 6 cells vertically from the intersection of 4th row and 8th column
-  firstSheet.getRange(4, 8, 6, 3).setBackground("yellow"); // select 6 cells vertically and 3 columns horizontally from the intersection of 4th row and 8th column
+  firstSheet.getRange(4, 8, 6).setBackground("yellow"); // (row, column, numRows) // select 6 cells vertically from the intersection of 4th row and 8th column
+  firstSheet.getRange(4, 8, 6, 3).setBackground("yellow"); // (row, column, numRows, numCols) // select 6 cells vertically and 3 columns horizontally from the intersection of 4th row and 8th column
   console.log(ss.getName());
 }
 ```
