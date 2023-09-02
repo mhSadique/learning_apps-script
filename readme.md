@@ -304,7 +304,7 @@ function myFunction() {
 }
 ```
 
-- You can define a function like below and use it in your Spreadsheet:
+- You can define a function like below and use it in your Spreadsheet,
 
 ```js
 function TIMES(input, multipliedBy) {
@@ -312,5 +312,5 @@ function TIMES(input, multipliedBy) {
 }
 ```
 
-Here is how you use it in your spreadsheet
+and, here is how you use it in your spreadsheet
 ![function used in spreadsheet](function%20applied.png)
