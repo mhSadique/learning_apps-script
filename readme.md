@@ -173,3 +173,26 @@ function createTableInDocUsingSheetDataThatAreDynamic() {
   table.getRow(0).editAsText().setBold(true);
 }
 ```
+- Example tracker that reads data from a sheet and creates a table on a Doc and then put the doc's info in another sheet in the same SpreadSheet
+  ```js
+  function trackSheet() {
+  const ss = SpreadsheetApp.openById('1A8mPDyaw2RRSaLlf1q_l1HTWEI8lsSWmEw7p8U1e2Kc');
+
+  const doc = DocumentApp.openById('1bSVKI9BPDQGVdWVqMwaBqZ61C8ghaEJoMWPDKS7JBD8');
+  const docBody = doc.getBody();
+
+  const sheet1 = ss.getSheetByName('Sheet1');
+  const tracking = ss.getSheetByName('Tracking');
+
+  const rowData = sheet1.getRange(1, 1, sheet1.getLastRow(), sheet1.getLastColumn()).getValues();
+  console.log(rowData);
+
+  docBody
+    .appendParagraph('New Table #' + tracking.getLastRow())
+    .setHeading(DocumentApp.ParagraphHeading.HEADING1);
+  const table = docBody.appendTable(rowData);
+  console.log('table', table);
+  const adder = tracking.appendRow([doc.getName(), doc.getId(), doc.getUrl(), Date()]);
+  console.log('adder', adder);
+}
+  ```
