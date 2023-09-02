@@ -173,3 +173,57 @@ function createTableInDocUsingSheetDataThatAreDynamic() {
   table.getRow(0).editAsText().setBold(true);
 }
 ```
+- Example tracker that reads data from a sheet and creates a table on a Doc and then put the doc's info in another sheet in the same SpreadSheet
+  ```js
+  function trackSheet() {
+  const ss = SpreadsheetApp.openById('1A8mPDyaw2RRSaLlf1q_l1HTWEI8lsSWmEw7p8U1e2Kc');
+
+  const doc = DocumentApp.openById('1bSVKI9BPDQGVdWVqMwaBqZ61C8ghaEJoMWPDKS7JBD8');
+  const docBody = doc.getBody();
+
+  const sheet1 = ss.getSheetByName('Sheet1');
+  const tracking = ss.getSheetByName('Tracking');
+
+  const rowData = sheet1.getRange(1, 1, sheet1.getLastRow(), sheet1.getLastColumn()).getValues();
+  console.log(rowData);
+
+  docBody
+    .appendParagraph('New Table #' + tracking.getLastRow())
+    .setHeading(DocumentApp.ParagraphHeading.HEADING1);
+  const table = docBody.appendTable(rowData);
+  console.log('table', table);
+  const adder = tracking.appendRow([doc.getName(), doc.getId(), doc.getUrl(), Date()]);
+  console.log('adder', adder);
+}
+```
+- How to autoresize columns or rows in a sheet
+```js
+function autoResize() {
+  const ss = SpreadsheetApp.openById('1A8mPDyaw2RRSaLlf1q_l1HTWEI8lsSWmEw7p8U1e2Kc');
+  const trackingSheet = ss.getSheetByName('Tracking');
+  // trackingSheet.autoResizeColumn(1); // resize only one specific column
+  trackingSheet.autoResizeColumns(1, 4); // resize a range of columns
+}
+```
+- How to clear the content of the sheet
+```js
+
+function clearSheet() {
+  const ss = SpreadsheetApp.openById('1A8mPDyaw2RRSaLlf1q_l1HTWEI8lsSWmEw7p8U1e2Kc');
+  const sheetToDelete = ss.getSheetByName('Sheet3');
+  sheetToDelete.clear();  
+}
+```
+
+- How to clear the format a sheet
+```js
+function clearFormat() {
+  const ss = SpreadsheetApp.openById('1A8mPDyaw2RRSaLlf1q_l1HTWEI8lsSWmEw7p8U1e2Kc');
+  const sheetToClearFormat = ss.getSheetByName('Sheet3');
+  
+  // sheetToClearFormat.clearFormats();  
+  // the line below is equivalent to the one above
+  sheetToClearFormat.clear({formatOnly: true, contentsOnly: false});
+}
+
+```
