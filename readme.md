@@ -113,7 +113,7 @@ function fun() {
 }
 ```
 
-- How you create a table in a Document using the data that are in a SpreadSheet:
+- How you create a table in a Document using SpreadSheet data:
 
 ```js
 function createTableInDocUsingSheetData() {
