@@ -214,3 +214,16 @@ function clearSheet() {
   sheetToDelete.clear();  
 }
 ```
+
+- How to clear the format a sheet
+```js
+function clearFormat() {
+  const ss = SpreadsheetApp.openById('1A8mPDyaw2RRSaLlf1q_l1HTWEI8lsSWmEw7p8U1e2Kc');
+  const sheetToClearFormat = ss.getSheetByName('Sheet3');
+  
+  // sheetToClearFormat.clearFormats();  
+  // the line below is equivalent to the one above
+  sheetToClearFormat.clear({formatOnly: true, contentsOnly: false});
+}
+
+```
