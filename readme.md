@@ -291,3 +291,26 @@ function doOtherStuff() {
   console.log({ lastColumn, maxColumn, sheetName, sheetParent });
 }
 ```
+
+- Select a spreadsheet in the bound script like below:
+
+```js
+function myFunction() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet(); // select the spreadsheet in a bound script
+  console.log(ss.getName());
+  const activeSheet = ss.getActiveSheet();
+  const activeSheetName = activeSheet.getName();
+  console.log(activeSheetName);
+}
+```
+
+- You can define a function like below and use it in your Spreadsheet:
+
+```js
+function TIMES(input, multipliedBy) {
+  return input * multipliedBy;
+}
+```
+
+Here is how you use it in your spreadsheet
+![function used in spreadsheet](function%20applied.png)
