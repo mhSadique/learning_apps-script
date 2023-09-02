@@ -205,3 +205,12 @@ function autoResize() {
   trackingSheet.autoResizeColumns(1, 4); // resize a range of columns
 }
 ```
+- How to clear the content of the sheet
+```js
+
+function clearSheet() {
+  const ss = SpreadsheetApp.openById('1A8mPDyaw2RRSaLlf1q_l1HTWEI8lsSWmEw7p8U1e2Kc');
+  const sheetToDelete = ss.getSheetByName('Sheet3');
+  sheetToDelete.clear();  
+}
+```
