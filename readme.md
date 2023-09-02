@@ -249,3 +249,19 @@ function clearFormat() {
   sheetToClearFormat.clear({ formatOnly: true, contentsOnly: false });
 }
 ```
+
+- How to copy a sheet's data to another sheet in a different Spreadsheet:
+
+```js
+function copySheetDataToAnotherSheet() {
+  const ss = SpreadsheetApp.openById(
+    "1A8mPDyaw2RRSaLlf1q_l1HTWEI8lsSWmEw7p8U1e2Kc"
+  );
+  const sheetToCopyFrom = ss.getSheetByName("Sheet1");
+
+  const ssToCopyTo = SpreadsheetApp.openById(
+    "1hZazGMYHBSGLR1HfV8tpc9gvXhX8arLPYlfHuKoM7O8"
+  );
+  sheetToCopyFrom.copyTo(ssToCopyTo);
+}
+```
