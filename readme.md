@@ -265,3 +265,29 @@ function copySheetDataToAnotherSheet() {
   sheetToCopyFrom.copyTo(ssToCopyTo);
 }
 ```
+
+- How to `deleteColumn(4), deleteColumns(2, 1), getLastColumn(), getMaxColumns(), getName(), getParent().getName(), hideSheet(), showSheet(), insertColumns(2)` in a sheet in Spreadsheet
+
+```js
+function doOtherStuff() {
+  const ss = SpreadsheetApp.openById(
+    "1A8mPDyaw2RRSaLlf1q_l1HTWEI8lsSWmEw7p8U1e2Kc"
+  );
+  const sheet = ss.getSheetByName("Sheet1");
+
+  // sheet.deleteColumn(4); // delete one column
+  // sheet.deleteColumns(2, 1); // delete the columns in between
+
+  const lastColumn = sheet.getLastColumn(); // get the last column that is populated with data
+  const maxColumn = sheet.getMaxColumns(); // get maximum number of columns added to the sheet
+  const sheetName = sheet.getName();
+  const sheetParent = sheet.getParent().getName();
+
+  // sheet.hideSheet(); // hide the sheet
+  // sheet.showSheet(); // show the sheet
+
+  // sheet.insertColumns(2); // there are other methods for inserting columns for inserting before and after - check them out
+
+  console.log({ lastColumn, maxColumn, sheetName, sheetParent });
+}
+```
