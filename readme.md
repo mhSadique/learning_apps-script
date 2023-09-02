@@ -196,3 +196,13 @@ function createTableInDocUsingSheetDataThatAreDynamic() {
   console.log('adder', adder);
 }
   ```
+- How to autoresize columns or rows in a sheet
+```js
+
+function autoResize() {
+  const ss = SpreadsheetApp.openById('1A8mPDyaw2RRSaLlf1q_l1HTWEI8lsSWmEw7p8U1e2Kc');
+  const trackingSheet = ss.getSheetByName('Tracking');
+  // trackingSheet.autoResizeColumn(1); // resize only one specific column
+  trackingSheet.autoResizeColumns(1, 4); // resize a range of columns
+}
+```
